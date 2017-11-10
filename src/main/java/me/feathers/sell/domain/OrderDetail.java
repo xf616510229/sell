@@ -17,26 +17,39 @@ import javax.persistence.Id;
 @Data
 public class OrderDetail {
 
-    /** id */
+    /**
+     * id
+     */
     @Id
-    @GeneratedValue
     private String detailId;
 
-    /** 订单id */
+    /**
+     * 订单id
+     */
     private String orderId;
 
-    /** 产品id */
+    /**
+     * 产品id
+     */
     private String productId;
 
-    /** 产品名称 */
+    /**
+     * 产品名称
+     */
     private String productName;
 
-    /** 产品价格 */
+    /**
+     * 产品价格
+     */
     private Double productPrice;
 
-    /** 产品数量 */
+    /**
+     * 产品数量
+     */
     private Integer productQuantity;
 
-    /** 产品图片 */
+    /**
+     * 产品图片
+     */
     private String productIcon;
 }

@@ -113,5 +113,30 @@ CREATE TABLE order_detail(
 - Log4j2
 - Logback
 
-最优秀，最通用 logback
+logback是主流，本项目采用logback作为日志框架
+
 ## Logback使用和配置
+
+在resources下新建logbck配置文件：`logback-spring.xml`，主要设置如下：
+
+- 控制台日志输出
+- 文件滚动输出，按照日期进行滚动
+- 分为info以及error日志
+
+> 注意：实现日志按照年月日级别分类的日志文件输出方式设置为：
+> log/%d{yyy/MM/dd}/info.log
+
+# nginx服务器配置
+
+修改配置文件
+```text
+vim /usr/local/nginx/conf/nginx.conf
+```
+
+修改server_name 为 sell.com
+修改proxy_pass字段ip地址为电脑ip地址
+
+reload
+```text
+nginx -s reload
+```

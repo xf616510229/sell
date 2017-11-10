@@ -1,11 +1,10 @@
 package me.feathers.sell.repository;
 
+import me.feathers.sell.SellTest;
 import me.feathers.sell.domain.ProductCategory;
+import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
@@ -16,11 +15,18 @@ import java.util.List;
  * @author Feathers
  * @date 2017-11-08 14:45
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class ProductCategoryRepositoryTest {
+public class ProductCategoryRepositoryTest extends SellTest{
     @Autowired
     private ProductCategoryRepository repository;
+
+    @Test
+    public void saveTest() {
+        ProductCategory category = new ProductCategory();
+        category.setCategoryType(2);
+        category.setCategoryName("测试");
+        ProductCategory save = repository.save(category);
+        Assert.assertNotNull(save.getCategoryId());
+    }
 
     @Test
     public void findAllTest() {

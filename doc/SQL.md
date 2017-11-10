@@ -1,4 +1,4 @@
-# 微信点餐数据库
+# 微信点餐数据库DDL
 
 
 ```sql
@@ -69,5 +69,40 @@ create table `seller_info` (
     primary key (`id`)
 ) comment '卖家信息表';
 
+```
+
+
+# 测试数据
+
+```sql
+-- 商品类别
+INSERT INTO product_category(category_id, category_name, category_type) 
+  VALUES(1, '热销', 1); 
+INSERT INTO product_category(category_id, category_name, category_type) 
+  VALUES(2, '主食', 2); 
+INSERT INTO product_category(category_id, category_name, category_type) 
+  VALUES(3, '菜品', 3); 
+
+-- 商品信息
+INSERT INTO product_info(product_id, product_name, product_price, product_stock, product_description, product_icon, category_type) 
+  VALUES('111112', '皮蛋粥', 2.5, 100, '皮蛋瘦肉精品之作', 'http://xxx/xxx.jpg', 1);
+INSERT INTO product_info(product_id, product_name, product_price, product_stock, product_description, product_icon, category_type) 
+  VALUES('111113', '青椒肉丝', 10.2, 100, '送米饭', 'http://xxx/xxx.jpg', 1);
+INSERT INTO product_info(product_id, product_name, product_price, product_stock, product_description, product_icon, category_type) 
+  VALUES('111114', '老母鸡汤', 8.2, 100, '农家老母鸡', 'http://xxx/xxx.jpg', 3);
+
+-- 订单信息
+INSERT INTO order_master(order_id, buyer_name, buyer_phone, buyer_address, buyer_openid, order_amount) 
+  VALUES('112330', '小明', '18945678899', '甲等大厦', '12345678', 200.0);
+INSERT INTO order_master(order_id, buyer_name, buyer_phone, buyer_address, buyer_openid, order_amount) 
+  VALUES('112331', '小明', '18945678899', '甲等大厦', '12345678', 150.0);
+
+-- 订单详情
+INSERT INTO order_detail(detail_id, order_id, product_id, product_name, product_price, product_quantity, product_icon) 
+  VALUES('11233101', '112331', '1111112', '皮蛋粥', 2.5, 40, 'http://xxx/xxx.jpg');
+  
+-- 卖家信息
+INSERT INTO seller_info(id, username, password, openid, seller_id) 
+  VALUES ('12345', 'sz12233', '1234567', '1234567888765', '12342342');
 ```
 
